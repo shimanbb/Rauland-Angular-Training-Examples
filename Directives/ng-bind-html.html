@@ -1,0 +1,20 @@
+<html>
+<head>
+  <title>ng-bind-html</title>
+</head>
+<body>
+  <div ng-app = "myModuleName" ng-controller="myFirstController">
+      Hello <span ng-bind-html="LastName"></span>, <span ng-bind="FirstName"></span>
+  </div>
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/angular-sanitize.min.js"></script>
+  <script>
+    var myModule = angular.module("myModuleName", ["ngSanitize"]);
+
+    myModule.controller("myFirstController", ["$scope", function($scope){
+        $scope.FirstName = "John";
+        $scope.LastName = "<b>Smith</b>";
+    }]);
+  </script>
+</body>
+</html>
