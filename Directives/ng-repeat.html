@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>ng-repeat</title>
+</head>
+<body>
+  <div ng-app = "myModuleName" ng-controller="myFirstController">
+      <ol>
+        <li ng-repeat="c in chars" ng-bind="c">
+          <!-- can also be done with {{c}} -->
+        </li>
+      </ol>
+
+      <ul>
+        <li ng-repeat="item in items">
+          [{{$index}}] =&gt; {{item.id}} - {{item.val}}
+        </li>
+      </ul>
+  </div>
+  <script src="lib/angular.min.js"></script>
+  <script>
+    var myModule = angular.module("myModuleName", []);
+
+    myModule.controller("myFirstController", ["$scope", function($scope){
+        $scope.chars = ['A', 'B', 'C', 'D', 'E'];
+
+        $scope.items = [
+          {
+            id: 1,
+            val: "A"
+          },
+          {
+            id: 2,
+            val: "B"
+          },
+          {
+            id: 3,
+            val: "C"
+          }
+        ]
+    }]);
+  </script>
+</body>
+</html>

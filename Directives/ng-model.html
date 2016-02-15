@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title>ng-repeat</title>
+</head>
+<body>
+  <div ng-app = "myModuleName" ng-controller="myFirstController">
+
+      <ol ng-init="populateChars()">
+        <li ng-repeat="c in chars">
+          <input type="text" ng-model="c" /> {{c}}
+        </li>
+      </ol>
+
+      <ol>
+        <li ng-repeat="c in chars" ng-bind="c">
+          <!-- can also be done with {{c}} -->
+        </li>
+      </ol>
+
+      <ol ng-init="populateChars()">
+        <li ng-repeat="c in chars">
+          <input type="text" ng-model="chars[$index]" /> {{chars[$index]}}
+        </li>
+      </ol>
+  </div>
+  <script src="lib/angular.min.js"></script>
+  <script>
+    var myModule = angular.module("myModuleName", []);
+
+    myModule.controller("myFirstController", ["$scope", function($scope){
+        $scope.populateChars = function(){
+          $scope.chars = ['A', 'B', 'C', 'D', 'E'];
+        }
+
+        $scope.populateItems = function(){
+          $scope.items = [
+            {
+              id: 1,
+              val: "A"
+            },
+            {
+              id: 2,
+              val: "B"
+            },
+            {
+              id: 3,
+              val: "C"
+            }
+          ];
+        }
+    }]);
+  </script>
+</body>
+</html>

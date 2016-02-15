@@ -1,0 +1,61 @@
+<html ng-app = "myModuleName">
+<head>
+  <title>ng-controller</title>
+  <style>
+    .div{
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body ng-controller="myFirstController">
+
+  <button type="button" ng-if="renderElement">Render</button>
+  <button type="button" ng-click="clickIt()" ng-disabled="clicked">Click It</button>
+
+  <div ng-show="clicked" ng-class="{div : clicked}" ng-style="{color: divColor}">
+    {{clicked}}
+  </div>
+
+  <select ng-model="val" ng-options="item.val for item in items">
+
+  </select>
+  {{val}}
+
+  <div ng-include="'\include.html'">    
+  </div>
+
+  <script src="lib/angular.min.js"></script>
+  <script>
+    var myModule = angular.module("myModuleName", []);
+
+    myModule.controller("myFirstController", ["$scope", function($scope){
+
+      $scope.renderElement = false;
+
+      $scope.clicked = false;
+
+      $scope.clickIt = function(){
+        $scope.clicked = true;
+      }
+
+      $scope.divColor = "red";
+
+      $scope.items = [
+        {
+          id: 1,
+          val: "A"
+        },
+        {
+          id: 2,
+          val: "B"
+        },
+        {
+          id: 3,
+          val: "C"
+        }
+      ]
+
+    }]);
+  </script>
+</body>
+</html>
