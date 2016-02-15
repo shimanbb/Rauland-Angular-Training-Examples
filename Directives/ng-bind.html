@@ -1,0 +1,21 @@
+<html>
+<head>
+  <title>ng-bind</title>
+</head>
+<body>
+  <div ng-app = "myModuleName" ng-controller="myFirstController">
+      Hello <span style="font-weight: bold" ng-bind="LastName"></span>, <span ng-bind="FirstName"></span>
+      <br />
+      Hello <b ng-bind="LastName"></b>, <span ng-bind="FirstName"></span>
+  </div>
+  <script src="lib/angular.min.js"></script>
+  <script>
+    var myModule = angular.module("myModuleName", []);
+
+    myModule.controller("myFirstController", ["$scope", function($scope){
+        $scope.FirstName = "John";
+        $scope.LastName = "Smith";
+    }]);
+  </script>
+</body>
+</html>

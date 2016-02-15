@@ -1,0 +1,17 @@
+<html ng-app = "myModuleName">
+<head>
+  <title>ng-controller</title>
+</head>
+<body ng-controller="myFirstController">
+  {{'hello' + ' ' + FirstName + ' '  + LastName}}
+  <script src="lib/angular.min.js"></script>
+  <script>
+    var myModule = angular.module("myModuleName", []);
+
+    myModule.controller("myFirstController", ["$scope", function($scope){
+        $scope.FirstName = "John";
+        $scope.LastName = "Smith";
+    }]);
+  </script>
+</body>
+</html>
